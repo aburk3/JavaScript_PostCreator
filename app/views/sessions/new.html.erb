@@ -1,0 +1,45 @@
+<body>
+
+  <div class="container">
+    <div class="text-center">
+      <div class="typewriter">
+        <div class="typewriter-text">
+          <h1><b>Pickleball Social</b></h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h5 class="card-title text-center">Sign In</h5>
+            <%= form_for @user, :url => url_for(:controller => 'sessions', :action => 'create'), html: {class: "form-signin"} do |f| %>
+              <div class="form-label-group">
+                <label for="inputEmail"></label>
+                <%= f.text_field :email, class: "fadeIn", class: "form-control", placeholder: "Email Address"%><br>
+              </div>
+
+              <div class="form-label-group">
+                <%= f.password_field :password, class: "fadeIn third", class: "form-control", placeholder: "Password" %>
+                <label for="inputPassword"></label>
+              </div>
+
+              <div class="custom-control custom-checkbox mb-3">
+                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                <label class="custom-control-label" for="customCheck1">Remember password</label>
+              </div>
+
+              <%= f.submit "Signin", class: "fadeIn fourth", class: "btn btn-lg btn-primary btn-block text-uppercase" %>
+
+              <hr class="my-4">
+              <%= link_to "Sign Up", new_user_path, class: "fadeIn fourth", class: "btn btn-lg btn-primary btn-block text-uppercase" %>
+              <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign in with Google</button>
+              <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
