@@ -42,7 +42,6 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item all_posts" href="<%= posts_path %>">All Posts</a>
-                <a class="dropdown-item" href="<%= liked_path %>">Liked Posts</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="<%= new_post_path %>">Create Post</a>
               </div>
@@ -51,10 +50,6 @@
               <a class="nav-link" href="<%= edit_user_path(current_user) %>">Profile Settings</a>
             </li>
           </ul>
-          <%= form_tag(search_path, method: 'get', class: 'form-inline my-2 my-lg-0') do %>
-          	<%= search_field_tag 'search', params[:search], class: 'form-control mr-sm-2', placeholder: 'Search' %>
-          	<%= submit_tag "Submit", class: 'btn btn-dark my-2 my-sm-0', :name => nil %>
-          <% end %>
         </div>
       <% end %>
     </nav>

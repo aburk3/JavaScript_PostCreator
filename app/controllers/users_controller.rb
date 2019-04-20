@@ -6,11 +6,9 @@ class UsersController < ApplicationController
   end
 
   def index
-    @clubs = Club.all
   end
 
   def show
-    @clubs = Club.last(2)
     @users = User.all
   end
 
