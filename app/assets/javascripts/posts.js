@@ -85,3 +85,24 @@ Post.prototype.formatIndex = function() {
   `
   return postHtml
 }
+
+/**
+ * Used to format the HTML for the Post show page
+ */
+Post.prototype.formatShow = function() {
+  let commentHtml = "";
+  let postHtml = `
+    <h2 class="postTitle">${this.title}</h2> by: ${this.user.first_name + " " + this.user.last_name}
+    <p class="postContent">${ this.content }</p>
+    <ul>`
+  for (i = 0; i < this.comments.length; i++) {
+    postHtml += `
+      <li>${ this.comments[i].content }</li>
+    `
+  }
+  postHtml += `
+    </ul>
+    <a href="/posts/${this.id}/comments/new">Create Comment</a>`
+
+  return postHtml
+}
