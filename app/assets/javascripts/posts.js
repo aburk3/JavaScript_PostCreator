@@ -46,3 +46,32 @@ const bindClickHandlers = () => {
     })
   })
 }
+
+/**
+ * Fetches the Post's and appends the returned HTML to index container
+ */
+const getPosts = () => {
+  fetch (`/posts.json`)
+    .then(res => res.json())
+    .then(posts => {
+      $('#app-container').html('')
+      posts.forEach(post => {
+        let newPost = new Post(post)
+        let postHtml = newPost.formatIndex()
+
+        $('#app-container').append(postHtml)
+      })
+    })
+}
+
+/**
+ * Post Constructor for creating a new Post object
+ */
+function Post(post) {
+  this.id = post.id
+  this.title = post.title
+  this.content = post.content
+  this.user = post.user
+  this.comments = post.comments
+  this.likes = post.likes
+}
