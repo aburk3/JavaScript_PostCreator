@@ -24,4 +24,25 @@ const bindClickHandlers = () => {
       $('#app-container').append(postHtml)
     })
   })
+  /**
+   * Hijacks the 'Create Post' submit form
+   */
+  $('#new_post').on('submit', function(e) {
+    e.preventDefault();
+    const values = $(this).serialize();
+
+    /**
+     * Makes AJAX post,
+     * clears container html,
+     * creates Post object, formats HTML,
+     * and appends HTML to container
+     */
+    $.post('/posts', values).done(function(data) {
+      $('#app-container').html('');
+      const newPost = new Post(data)
+      const htmlToAdd = newPost.formatShow()
+
+      $('#app-container').html(htmlToAdd);
+    })
+  })
 }
