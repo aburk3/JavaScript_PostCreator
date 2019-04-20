@@ -75,3 +75,13 @@ function Post(post) {
   this.comments = post.comments
   this.likes = post.likes
 }
+
+/**
+ * Formats the Post's index page
+ */
+Post.prototype.formatIndex = function() {
+  let postHtml = `
+    <a href="/posts/${this.id}" data-id="${this.id}" class="show_link"><h1>${this.title}</h1></a>
+  `
+  return postHtml
+}
