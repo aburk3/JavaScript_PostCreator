@@ -1,0 +1,77 @@
+<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-2">
+  </div>
+</div>
+
+<div class="container">
+  <div>
+
+
+    <div class="typewriter">
+      <span class="typewriter-text"><%= @user.first_name + " " + @user.last_name %></span>
+
+      <br>
+      <span><strong>State:</strong><small> <%= @user.state %></small> </span>
+    </div>
+
+    <div class="typewriter">
+      <span class=" badge badge-success"><%= @user.posts.count %> <%= (@user.posts.count) == 1 ? 'Post' : 'Posts'%></span>
+      <span class=" badge badge-info"><%= @user.comments.count %> <%= (@user.comments.count) == 1 ? 'Comment' : 'Comments'%></span>
+    </div>
+
+    <hr>
+
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Posts</a>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        <div class="container py-2">
+          <% if @user.posts.any? %>
+            <h2 class="font-weight-light text-center text-muted py-3">Recent Posts</h2>
+            <% @user.posts.to_enum.with_index.reverse_each do |post, index| %>
+            <!-- timeline item 1 -->
+            <!--/row-->
+            <!-- timeline item 2 -->
+              <div class="row">
+                  <div class="col-auto text-center flex-column d-none d-sm-flex">
+                      <div class="row h-50">
+                          <div class="col border-right">&nbsp;</div>
+                          <div class="col">&nbsp;</div>
+                      </div>
+                      <h5 class="m-2">
+                          <span class="badge badge-pill bg-success">&nbsp;</span>
+                      </h5>
+                      <% if post != @user.posts.first %>
+                        <div class="row h-50">
+                            <div class="col border-right">&nbsp;</div>
+                            <div class="col">&nbsp;</div>
+                        </div>
+                      <% end %>
+                  </div>
+                  <div class="col py-2">
+                      <div class="card border-success shadow">
+                          <div class="card-body">
+                              <div class="float-right text-success"><%= time_ago_in_words(post.created_at) %> ago</div>
+                              <h4 class="card-title text-success"><%= post.title %></h4>
+                              <p class="card-text"><%= post.content %></p>
+                              <%= button_to 'View Post', post_path(post), method: :get, class: 'btn btn-sm btn-outline-secondary' %>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+        <!--container-->
+
+        <hr>
+
+      </div>
+
+    </div>
+  </div>
+</div>
