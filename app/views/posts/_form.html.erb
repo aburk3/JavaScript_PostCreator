@@ -1,0 +1,28 @@
+<%= form_for @post, :html => {:id => "new_post"} do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2>There were some errors</h2>
+      <ul>
+        <% @post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :title, "Post Title" %><br>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :content %><br>
+    <%= f.text_area :content, size: "55x8" %>
+  </div>
+
+  <div class="actions">
+  	<%= f.submit :Submit, class: 'btn btn-success' %>
+  	<%= link_to "cancel", posts_path(@post), :class=>"btn btn-xs btn-danger" %>
+  </div>
+
+<% end %>
