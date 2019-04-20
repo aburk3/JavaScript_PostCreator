@@ -106,3 +106,11 @@ Post.prototype.formatShow = function() {
 
   return postHtml
 }
+
+/**
+ * Constructor function for Comments
+ */
+function Comment(comment) {
+  this.content = comment.content
+  this.user = comment.user
+}
